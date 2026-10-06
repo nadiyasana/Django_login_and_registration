@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+```
+<title>Home</title>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+    }
+
+    body {
+        min-height: 100vh;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: #333;
+    }
+
+    /* Navigation Bar */
+    .navbar {
+        width: 100%;
+        padding: 18px 7%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: rgba(255, 255, 255, 0.95);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo {
+        font-size: 24px;
+        font-weight: bold;
+        color: #667eea;
+    }
+
+    .logout-btn {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 8px;
+        background: #667eea;
+        color: white;
+        font-size: 14px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .logout-btn:hover {
+        background: #5568d9;
+        transform: translateY(-2px);
+    }
+
+    /* Main Section */
+    .home-container {
+        min-height: calc(100vh - 70px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 30px 20px;
+    }
+
+    .welcome-card {
+        width: 100%;
+        max-width: 650px;
+        background: rgba(255, 255, 255, 0.97);
+        padding: 55px 45px;
+        border-radius: 22px;
+        text-align: center;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+    }
+
+    .welcome-icon {
+        width: 80px;
+        height: 80px;
+        margin: 0 auto 25px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 38px;
+    }
+
+    .welcome-card h1 {
+        font-size: 36px;
+        margin-bottom: 15px;
+        color: #333;
+    }
+
+    .username {
+        color: #667eea;
+        font-weight: bold;
+    }
+
+    .welcome-card p {
+        color: #777;
+        font-size: 16px;
+        line-height: 1.6;
+        margin-bottom: 30px;
+    }
+
+    .dashboard-btn {
+        display: inline-block;
+        padding: 13px 28px;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+
+    .dashboard-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(102, 126, 234, 0.35);
+    }
+
+    /* Mobile */
+    @media (max-width: 600px) {
+
+        .navbar {
+            padding: 15px 5%;
+        }
+
+        .logo {
+            font-size: 20px;
+        }
+
+        .welcome-card {
+            padding: 40px 25px;
+        }
+
+        .welcome-card h1 {
+            font-size: 28px;
+        }
+
+        .welcome-card p {
+            font-size: 14px;
+        }
+    }
+</style>
+```
+
+</head>
+
+<body>
+
+```
+<!-- Navigation -->
+<nav class="navbar">
+
+    <div class="logo">
+        My Website
+    </div>
+
+    <form method="post" action="{% url 'logout' %}">
+        {% csrf_token %}
+        <button type="submit" class="logout-btn">
+            Logout
+        </button>
+    </form>
+
+</nav>
+
+
+<!-- Welcome Section -->
+<main class="home-container">
+
+    <div class="welcome-card">
+
+        <div class="welcome-icon">
+            👋
+        </div>
+
+        <h1>
+            Welcome, <span class="username">{{ user.username }}</span>!
+        </h1>
+
+        <p>
+            We're happy to have you here.
+            You have successfully logged into your account.
+        </p>
+
+        <a href="#" class="dashboard-btn">
+            Get Started
+        </a>
+
+    </div>
+
+</main>
+```
+
+</body>
+</html>
